@@ -1,0 +1,25 @@
+{
+  "name": "offer-backend",
+  "version": "1.0.0",
+  "description": "Backend api for offer-market",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rumonkh0/offer-backend.git"
+  },
+  "keywords": [
+    "api",
+    "offer",
+    "e-commerce"
+  ],
+  "author": "Rumon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rumonkh0/offer-backend/issues"
+  },
+  "homepage": "https://github.com/rumonkh0/offer-backend#readme"
+}
