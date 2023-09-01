@@ -9,10 +9,7 @@ const {
 } = require("../controllers/products");
 
 // app.use('/api/v1/bootcamps', bootcamps);
-router.get("/", getProducts);
-router.get("/:id", getProduct);
-router.post("/", createProduct);
-router.put("/:id", updateProduct);
-router.delete("/:id", deleteProduct);
+router.route("/").get(getProducts).post(createProduct);
+router.route("/").get(getProduct).put(updateProduct).delete(deleteProduct);
 
 module.exports = router;

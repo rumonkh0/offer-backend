@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const HistorySchema = new mongoose.Schema({
-  productId: {
+const RequestSchema = new mongoose.Schema({
+  updateProduct: {
     type: mongoose.Schema.ObjectId,
     ref: "Product",
   },
@@ -37,17 +37,10 @@ const HistorySchema = new mongoose.Schema({
     ref: "Controller",
     required: true,
   },
-  approvedBy: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Controller",
-    required: true,
-  },
-  requestedAt: Date,
-  publishedAt: Date,
-  historyAT: {
+  requestedAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = mongoose.model("History", HistorySchema);
+module.exports = mongoose.model("Request", RequestSchema);

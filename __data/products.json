@@ -10,6 +10,8 @@
     "regular_price": "22156",
     "offer_price": "8548",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -23,6 +25,8 @@
     "regular_price": "7999",
     "offer_price": "6799",
     "free_shipping": false,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -36,6 +40,8 @@
     "regular_price": "15000",
     "offer_price": "10500",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -49,6 +55,8 @@
     "regular_price": "5000",
     "offer_price": "4500",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -62,6 +70,8 @@
     "regular_price": "12000",
     "offer_price": "7200",
     "free_shipping": false,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -75,6 +85,8 @@
     "regular_price": "6000",
     "offer_price": "4500",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -88,6 +100,8 @@
     "regular_price": "2500",
     "offer_price": "2000",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -101,6 +115,8 @@
     "regular_price": "1500",
     "offer_price": "1050",
     "free_shipping": false,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -114,6 +130,8 @@
     "regular_price": "4000",
     "offer_price": "3400",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   },
   {
@@ -127,6 +145,8 @@
     "regular_price": "800",
     "offer_price": "720",
     "free_shipping": true,
+    "createdBy": "64f20805f3e0542fa743895e",
+    "approvedBy": "64f20805f3e0542fa743895e",
     "created-date": "2015-03-25"
   }
 ]
