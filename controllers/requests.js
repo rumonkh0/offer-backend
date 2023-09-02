@@ -8,8 +8,7 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/controllers/:controllerId/requests
 // @access    Private
 exports.getRequests = asyncHandler(async (req, res, next) => {
-  const request = await Request.find();
-  res.status(200).json({ success: true, count: request.length, data: request });
+  res.status(200).json(res.advancedresult);
 });
 
 // @desc      Get single request
@@ -79,7 +78,7 @@ exports.approveRequest = asyncHandler(async (req, res, next) => {
 
   request.status = "approved";
   request.approvedBy = "64f2d290ac9d5de56ed33845";
-  request.publishedAt = new Date().toJSON().slice(0, 10);
+  request.publishedAt = new Date().toJSON();
   request.save();
 
   res.status(200).json({ success: true, data: request });

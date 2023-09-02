@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router({ mergeParams: true });
+const Request = require("../models/Request");
 const {
   getRequests,
   getRequest,
@@ -10,12 +10,18 @@ const {
   deleteRequest,
 } = require("../controllers/requests");
 
-const requests = require("../routes/requests");
+const { protect, authorize } = require('../middleware/auth');
+const advancedResults = require("../middleware/advancedResults");
+
+const router = express.Router({ mergeParams: true });
 
 // app.use('/api/v1/bootcamps', bootcamps);
-router.route("/").get(getRequests).post(createRequest);
-router.route("/:id").get(getRequest).put(updateRequest).delete(deleteRequest);
-router.put("/:id/approve/", approveRequest);
-router.put("/:id/reject/", rejectRequest);
+router
+  .route("/")
+  .get(protect, advancedResults(Request), getRequests)
+  .post(protect, createRequest);
+router.route("/:id").get(protect, getRequest).put(updateRequest).delete(deleteRequest);
+router.put("/:id/approve/", protect, approveRequest);
+router.put("/:id/reject/", protect, rejectRequest);
 
 module.exports = router;

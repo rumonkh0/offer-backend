@@ -6,8 +6,7 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/products
 // @access    Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
-  const product = await Product.find();
-  res.status(200).json({ success: true, count:product.length, data: product });
+  res.status(200).json(res.advancedResults);
 });
 
 // @desc      Get single product
@@ -15,7 +14,8 @@ exports.getProducts = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.getProduct = asyncHandler(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
-  if (!product) return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
+  if (!product)
+    return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
   res.status(200).json({ success: true, data: product });
 });
 
@@ -35,7 +35,8 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
     new: true,
     runValidators: true,
   });
-  if (!product) return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
+  if (!product)
+    return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
   res.status(200).json({ success: true, data: product });
 });
 
@@ -44,6 +45,7 @@ exports.updateProduct = asyncHandler(async (req, res, next) => {
 // @access    Private
 exports.deleteProduct = asyncHandler(async (req, res, next) => {
   const product = await Product.findByIdAndDelete(req.params.id);
-  if (!product) return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
+  if (!product)
+    return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
   res.status(200).json({ success: true, data: {} });
 });

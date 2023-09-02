@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt')
 
 const ControllerSchema = new mongoose.Schema(
   {
@@ -37,5 +39,34 @@ ControllerSchema.virtual("products", {
   foreignField: "createdBy",
   justOne: false,
 });
+
+ControllerSchema.methods.getSignedJwtToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+};
+
+// Encrypt password using bcrypt
+ControllerSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Encrypt password using bcrypt while updating (admin)
+ControllerSchema.pre("findOneAndUpdate", async function (next) {
+  if (this._update.password) {
+    this._update.password = await bcrypt.hash(this._update.password, 10);
+  }
+  next();
+});
+
+// Match user entered password to hashed password in database
+ControllerSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 module.exports = mongoose.model("Controller", ControllerSchema);

@@ -6,10 +6,9 @@ const ErrorResponse = require("../utils/errorResponse");
 // @route     GET /api/v1/controllers
 // @access    Private
 exports.getControllers = asyncHandler(async (req, res, next) => {
-  const controller = await Controller.find();
   res
     .status(200)
-    .json({ success: true, count: controller.length, data: controller });
+    .json(res.advancedResults);
 });
 
 // @desc      Get single contorller
