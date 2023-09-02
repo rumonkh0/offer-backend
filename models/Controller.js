@@ -5,7 +5,8 @@ const ControllerSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Please add a name"],
-      // trim: true,
+      trim: true,
+      unique: true,
       maxlength: [20, "Name can not be more than 20 characters"],
     },
     role: {

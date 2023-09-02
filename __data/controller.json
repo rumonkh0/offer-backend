@@ -1,63 +1,62 @@
 [
-    {
-      "name": "Abdul Bari",
-      "role": "moderator",
-      "password": "02398409238",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "John Doe",
-      "role": "moderator",
-      "password": "p@ssw0rd",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Jane Smith",
-      "role": "moderator",
-      "password": "secure123",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Alice Johnson",
-      "role": "moderator",
-      "password": "password123",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Bob Brown",
-      "role": "moderator",
-      "password": "mysecretpass",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Ella Davis",
-      "role": "moderator",
-      "password": "letmein",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "William Wilson",
-      "role": "moderator",
-      "password": "12345678",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Olivia Miller",
-      "role": "moderator",
-      "password": "ilovecats",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Liam Jones",
-      "role": "moderator",
-      "password": "password123",
-      "createdAt": "2015-03-25"
-    },
-    {
-      "name": "Sophia Clark",
-      "role": "moderator",
-      "password": "qwerty",
-      "createdAt": "2015-03-25"CourseSchema.post("findOneAndUpdate", async function (doc) {
-
-    }
-  ]
+  {
+    "name": "Abdul Bari",
+    "role": "moderator",
+    "password": "02398409238",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "John Doe",
+    "role": "moderator",
+    "password": "p@ssw0rd",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Jane Smith",
+    "role": "moderator",
+    "password": "secure123",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Alice Johnson",
+    "role": "moderator",
+    "password": "password123",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Bob Brown",
+    "role": "moderator",
+    "password": "mysecretpass",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Ella Davis",
+    "role": "moderator",
+    "password": "letmein",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "William Wilson",
+    "role": "moderator",
+    "password": "12345678",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Olivia Miller",
+    "role": "moderator",
+    "password": "ilovecats",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Liam Jones",
+    "role": "moderator",
+    "password": "password123",
+    "createdAt": "2015-03-25"
+  },
+  {
+    "name": "Sophia Clark",
+    "role": "moderator",
+    "password": "qwerty",
+    "createdAt": "2015-03-25"
+  }
+]
