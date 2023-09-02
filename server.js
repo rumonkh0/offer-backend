@@ -13,6 +13,7 @@ connectDB();
 //Route files
 const products = require("./routes/products");
 const controllers = require("./routes/controllers");
+const requests = require("./routes/requests");
 
 const app = express();
 
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === "development") {
 //mount routers
 app.use("/products", products);
 app.use("/controllers", controllers);
+app.use("/requests", requests);
 
 app.use(errorHandler);
 

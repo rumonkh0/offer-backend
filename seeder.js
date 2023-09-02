@@ -7,9 +7,8 @@ dotenv.config({ path: './config/config.env' });
 
 // Load models
 const Product = require('./models/Product');
-const Controller = require('./models/ControllerCourseSchema.post("findOneAndUpdate", async function (doc) {
-  ');
-// const User = require('./models/User');
+const Controller = require('./models/Controller')
+const Request = require('./models/Request');
 // const Review = require('./models/Review');
 
 // Connect to DB
@@ -27,9 +26,9 @@ const controllers = JSON.parse(
   fs.readFileSync(`${__dirname}/__data/controller.json`, 'utf-8')
 );
 
-// const users = JSON.parse(
-//   fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8')
-// );
+const requests = JSON.parse(
+  fs.readFileSync(`${__dirname}/__data/requests.json`, 'utf-8')
+);
 
 // const reviews = JSON.parse(
 //   fs.readFileSync(`${__dirname}/_data/reviews.json`, 'utf-8')
@@ -40,7 +39,7 @@ const importData = async () => {
   try {
     await Product.create(products);
     await Controller.create(controllers);
-    // await User.create(users);
+    await Request.create(requests);
     // await Review.create(reviews);
     console.log('Data Imported...');
     process.exit();
@@ -54,7 +53,7 @@ const deleteData = async () => {
   try {
     await Product.deleteMany();
     await Controller.deleteMany();
-    // await User.deleteMany();
+    await Request.deleteMany();
     // await Review.deleteMany();
     console.log('Data Destroyed...');
     process.exit();
