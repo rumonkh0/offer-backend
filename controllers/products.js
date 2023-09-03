@@ -1,9 +1,18 @@
 const Product = require("../models/Product");
 const asyncHandler = require("../middleware/async");
 const ErrorResponse = require("../utils/errorResponse");
+const advancedResults = require("../middleware/advancedResults");
+
+exports.setFind = asyncHandler(async (req, res, next) => {
+  if (req.params.controllerId) {
+    req.findby = { createdBy: req.params.controllerId };
+  }
+  next();
+});
 
 // @desc      Get all products
 // @route     GET /api/v1/products
+// @route     GET /api/v1/products/:productsId/products
 // @access    Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
@@ -23,6 +32,8 @@ exports.getProduct = asyncHandler(async (req, res, next) => {
 // @route     POST /api/v1/products
 // @access    Private
 exports.createProduct = asyncHandler(async (req, res, next) => {
+  req.body.approvedBy = req.controller._id;
+  req.body.createdBy = req.controller._id;
   const product = await Product.create(req.body);
   res.status(200).json({ success: true, data: product });
 });

@@ -5,32 +5,35 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   const reqQuery = { ...req.query };
 
   // Fields to exclude
-  const removeFields = ['select', 'sort', 'page', 'limit'];
+  const removeFields = ["select", "sort", "page", "limit"];
 
   // Loop over removeFields and delete them from reqQuery
-  removeFields.forEach(param => delete reqQuery[param]);
+  removeFields.forEach((param) => delete reqQuery[param]);
 
   // Create query string
   let queryStr = JSON.stringify(reqQuery);
 
   // Create operators ($gt, $gte, etc)
-  queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+  queryStr = queryStr.replace(
+    /\b(gt|gte|lt|lte|in)\b/g,
+    (match) => `$${match}`
+  );
 
   // Finding resource
   query = model.find(JSON.parse(queryStr));
 
   // Select Fields
   if (req.query.select) {
-    const fields = req.query.select.split(',').join(' ');
+    const fields = req.query.select.split(",").join(" ");
     query = query.select(fields);
   }
 
   // Sort
   if (req.query.sort) {
-    const sortBy = req.query.sort.split(',').join(' ');
+    const sortBy = req.query.sort.split(",").join(" ");
     query = query.sort(sortBy);
   } else {
-    query = query.sort('-createdAt');
+    query = query.sort("-createdAt");
   }
 
   // Pagination
@@ -47,7 +50,10 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   }
 
   // Executing query
-  const results = await query;
+  // console.log(req.findby)
+  var results;
+  if (!req.findby) results = await query;
+  else results = await query.find(req.findby);
 
   // Pagination result
   const pagination = {};
@@ -55,14 +61,14 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   if (endIndex < total) {
     pagination.next = {
       page: page + 1,
-      limit
+      limit,
     };
   }
 
   if (startIndex > 0) {
     pagination.prev = {
       page: page - 1,
-      limit
+      limit,
     };
   }
 
@@ -70,7 +76,7 @@ const advancedResults = (model, populate) => async (req, res, next) => {
     success: true,
     count: results.length,
     pagination,
-    data: results
+    data: results,
   };
 
   next();

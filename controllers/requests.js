@@ -3,12 +3,23 @@ const Product = require("../models/Product");
 const asyncHandler = require("../middleware/async");
 const ErrorResponse = require("../utils/errorResponse");
 
+exports.setFind = asyncHandler(async (req, res, next) => {
+  if (req.params.controllerId) {
+    if (req.controller.role != "admin" && req.controller._id != req.params._id)
+      return next(new ErrorResponse("not authorized", 404));
+    req.findby = { createdBy: req.params.controllerId };
+  } else if (req.controller.role != "admin") {
+    return next(new ErrorResponse("not authorized", 404));
+  }
+  next();
+});
+
 // @desc      Get all requests
 // @route     GET /api/v1/requests
 // @route     GET /api/v1/controllers/:controllerId/requests
 // @access    Private
 exports.getRequests = asyncHandler(async (req, res, next) => {
-  res.status(200).json(res.advancedresult);
+  res.status(200).json(res.advancedResults);
 });
 
 // @desc      Get single request
@@ -105,4 +116,38 @@ exports.deleteRequest = asyncHandler(async (req, res, next) => {
   if (!request)
     return next(new ErrorResponse(`not found the id: ${req.params.id}`, 404));
   res.status(200).json({ success: true, data: {} });
+});
+
+exports.setHistoryFind = asyncHandler(async (req, res, next) => {
+  if (req.params.controllerId) {
+    //check contoller is owner of product
+    if (req.controller.role != "admin" && req.controller._id != req.params._id)
+      return next(new ErrorResponse("not authorized", 404));
+
+    // set find parameter
+    if (req.params.id) {
+      req.findby = {
+        createdBy: req.params.controllerId,
+        updateProduct: req.params.id,
+      };
+    } else {
+      req.findby = {
+        createdBy: req.params.controllerId,
+      };
+    }
+    return next();
+  } else if (req.controller.role != "admin") {
+    return next(new ErrorResponse("not authorized", 404));
+  }
+  console.log("hoal");
+  req.findby = { ...req.findby, updateProduct: req.params.id };
+  next();
+});
+
+// @desc      GET history of specific product
+// @route     GET /api/v1/history/:id
+// @route     GET /api/v1/controllers/:controllerId/history/:id
+// @access    Private
+exports.getHistory = asyncHandler(async (req, res, next) => {
+  res.status(200).json(res.advancedResults);
 });
