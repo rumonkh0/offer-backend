@@ -5,7 +5,10 @@ const ErrorResponse = require("../utils/errorResponse");
 
 exports.setFind = asyncHandler(async (req, res, next) => {
   if (req.params.controllerId) {
-    if (req.controller.role != "admin" && req.controller._id != req.params._id)
+    if (
+      req.controller.role != "admin" &&
+      req.controller._id != req.params.controllerId
+    )
       return next(new ErrorResponse("not authorized", 404));
     req.findby = { createdBy: req.params.controllerId };
   } else if (req.controller.role != "admin") {
