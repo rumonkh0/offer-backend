@@ -144,7 +144,6 @@ exports.setHistoryFind = asyncHandler(async (req, res, next) => {
   } else if (req.controller.role != "admin") {
     return next(new ErrorResponse("not authorized", 404));
   }
-  console.log("hoal");
   req.findby = { ...req.findby, updateProduct: req.params.id };
   next();
 });
