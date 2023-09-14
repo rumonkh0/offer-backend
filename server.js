@@ -35,9 +35,7 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 
 //mount routers
-app.use("/", (req, res, next) => {
-  res.status(200).json({ msg: "hello from offer-market" });
-});
+
 app.use("/api/products", products);
 app.use("/api/controllers", controllers);
 app.use("/api/requests", requests);
