@@ -40,8 +40,10 @@ exports.getRequest = asyncHandler(async (req, res, next) => {
 // @route     POST /api/v1/requests
 // @access    Private
 exports.createRequest = asyncHandler(async (req, res, next) => {
-  const request = await Request.create(req.body);
-  res.status(200).json({ success: true, data: request });
+  req.body.formData.image = req.files[0].path;
+  // console.log(req.body.formData);
+  const request = await Request.create(req.body.formData);
+  res.status(200).json({ success: true, data: "request" });
 });
 
 // @desc      Update request
